@@ -21,18 +21,22 @@ int main() {
     else if(size_file1==0){
         cout<<"Source is empty\n";
     }
+    // destination file is missing ,create new file and copy data using read buffer
     else if(!file2.is_open()){
         cout<<"destination file is missing\ncreate and copy ";
         file1.seekg(0,ios::beg);
         ofstream file2(destination,ios::binary);
         file2<<file1.rdbuf();
     }
+    // destination file is empty , copy data using read buffer
     else if(size_file2==0){
          cout<<"Destination is empty\n";
          file1.seekg(0,ios::beg);
-        ofstream file2(destination,ios::binary);
-        file2 <<file1.rdbuf();
-    }
-    
+         ofstream file2(destination,ios::binary);
+         file2 <<file1.rdbuf();
+
+         // File 2 is copied or deleted
+      
+    } 
     return 0;
 }
