@@ -34,9 +34,15 @@ int main() {
          file1.seekg(0,ios::beg);
          ofstream file2(destination,ios::binary);
          file2 <<file1.rdbuf();
-
-         // File 2 is copied or deleted
-      
-    } 
+    }
+    // file 2 contains date then delete and over write
+    
+    else{
+        file1.seekg(0, ios::beg);
+        ofstream file2(destination ,ios::binary| ios::trunc);
+        file2 << file1.rdbuf();
+        cout<<"Destination file is over written";
+    }
+   
     return 0;
 }
